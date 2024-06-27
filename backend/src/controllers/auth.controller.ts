@@ -41,7 +41,7 @@ export const signup = async (req: Request, res: Response) => {
       const token = generateTokenAndSetCookie(newUser.id, res);
 
       res.status(200).json({
-        msg: "signed up successfully",
+        msg: "Signed up successfully",
         userId: newUser.id,
         username: newUser.username,
         fullName: newUser.fullName,
@@ -80,7 +80,7 @@ export const login = async (req: Request, res: Response) => {
     const token = generateTokenAndSetCookie(user?.id || "", res);
 
     res.status(200).json({
-      msg: "logged in successfully",
+      msg: "Logged in successfully",
       userId: user?.id,
       username: user?.username,
       fullName: user?.fullName,
@@ -94,4 +94,13 @@ export const login = async (req: Request, res: Response) => {
     res.status(500).json({ error: "Internal server error" });
   }
 };
-export const logout = async (req: Request, res: Response) => {};
+export const logout = async (req: Request, res: Response) => {
+  try {
+    res.cookie("jwt", "", { maxAge: 0 });
+    res.status(200).json({ msg: "Logged out successfully" });
+  } catch (error) {
+    console.log("error in logout controller ...........");
+    console.log(error);
+    res.status(500).json({ error: "Internal server error" });
+  }
+};
