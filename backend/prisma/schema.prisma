@@ -20,7 +20,7 @@ model User {
   fullName String
   password String
   gender Gender
-  profilePic String?
+  profilePic String
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 
