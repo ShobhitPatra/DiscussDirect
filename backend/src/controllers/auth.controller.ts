@@ -2,6 +2,7 @@ import { Request, Response } from "express";
 import bcryptjs from "bcryptjs";
 import prisma from "../db/prisma.js";
 import generateTokenAndSetCookie from "../utils/generateTokenAndSetCookie.js";
+import { useReducedMotion } from "framer-motion";
 
 export const signup = async (req: Request, res: Response) => {
   try {
@@ -40,6 +41,7 @@ export const signup = async (req: Request, res: Response) => {
       const token = generateTokenAndSetCookie(newUser.id, res);
 
       res.status(200).json({
+        msg: "signed up successfully",
         userId: newUser.id,
         username: newUser.username,
         fullName: newUser.fullName,
@@ -50,11 +52,46 @@ export const signup = async (req: Request, res: Response) => {
     }
     throw new Error("Unexpected error during signup");
   } catch (error) {
-    console.log("error in signup controller ");
+    console.log("error in signup controller ...........");
     console.log(error);
     res.status(500).json({ error: "Internal server error" });
   }
 };
 
-export const login = async (req: Request, res: Response) => {};
+export const login = async (req: Request, res: Response) => {
+  try {
+    const { username, password } = req.body;
+    if (!username || !password) {
+      res.status(400).json({ msg: "Please fill in all the feilds" });
+    }
+    const user = await prisma.user.findUnique({ where: { username } });
+    if (!user) {
+      res.status(400).json({ msg: "username does not exist" });
+    }
+
+    const isPasswordCorrect = await bcryptjs.compare(
+      password,
+      user?.password || ""
+    );
+    if (!isPasswordCorrect) {
+      res.status(400).json({ msg: "password is incorrect" });
+    }
+
+    const token = generateTokenAndSetCookie(user?.id || "", res);
+
+    res.status(200).json({
+      msg: "logged in successfully",
+      userId: user?.id,
+      username: user?.username,
+      fullName: user?.fullName,
+      gender: user?.gender,
+      profilePic: user?.profilePic,
+      token,
+    });
+  } catch (error) {
+    console.log("error in login controller ...........");
+    console.log(error);
+    res.status(500).json({ error: "Internal server error" });
+  }
+};
 export const logout = async (req: Request, res: Response) => {};
