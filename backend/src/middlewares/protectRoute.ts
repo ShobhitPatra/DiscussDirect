@@ -27,21 +27,12 @@ const protectRoute = async (
       return res.status(400).json({ msg: "token not available" });
     }
 
-    // if (!process.env.JWT_SECRET) {
-    //   return res.status(400).json({ msg: "JWT secret is not set" });
-    // }
-
-    // let decoded: DecodedToken;
-    // try {
-    const decoded = jwt.verify(token, process.env.JWT_SECRET) as DecodedToken;
-    // } catch (error) {
-    //   return res.status(400).json({ msg: "token verification failed" });
-    // }
+    const decoded = jwt.verify(token, process.env.JWT_SECRET!) as DecodedToken;
 
     const user: any = await prisma.user.findUnique({
       where: { id: decoded.userId },
       select: {
-        id: true, // Include the id in the selection
+        id: true,
         username: true,
         fullName: true,
         gender: true,

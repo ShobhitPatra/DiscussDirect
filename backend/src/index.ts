@@ -6,14 +6,12 @@ import dotenv from "dotenv";
 dotenv.config();
 
 const app = express();
-const PORT = 4000;
+const PORT = process.env.PORT;
 app.use(express.json());
 app.use(cookieParser());
-app.get("/", (req, res) => {
-  res.send("hello ji from root");
-});
+
 app.use("/api/auth", authRoutes);
-app.use("/api/messages", messageRoutes);
+app.use("/api/message", messageRoutes);
 
 app.listen(PORT, () => {
   console.log(`server running on PORT ${PORT}`);
