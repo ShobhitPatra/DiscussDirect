@@ -8,7 +8,7 @@ const Conversation = () => {
           </div>
         </div>
 
-        <div className="flex gap-8 items-center px-2 ">
+        <div className="flex gap-2 items-center px-2 ">
           <div className="md:text-lg text-sm text-slate-300 font-semibold">
             Shobhit Patra
           </div>
