@@ -6,11 +6,13 @@ import { Login } from "./pages/Login";
 function App() {
   return (
     <>
-      <Routes>
-        <Route path="/" element={<Home />}></Route>
-        <Route path="/signup" element={<Signup />}></Route>
-        <Route path="/login" element={<Login />}></Route>
-      </Routes>
+      <div className="h-screen p-4 flex items-center justify-center">
+        <Routes>
+          <Route path="/" element={<Home />}></Route>
+          <Route path="/signup" element={<Signup />}></Route>
+          <Route path="/login" element={<Login />}></Route>
+        </Routes>
+      </div>
     </>
   );
 }
