@@ -39,7 +39,7 @@ export const Login = () => {
             </div>
             <div className="flex justify-center ">
               <button className="bg-green-500 w-full p-2 rounded-md m-2 hover:bg-green-400 hover:shadow-md hover:shadow-green-400/50">
-                <span className="text-xl font-semibold text-slate-800">
+                <span className="text-xl font-semibold text-slate-800 hover:text-slate-700">
                   Login
                 </span>
               </button>
