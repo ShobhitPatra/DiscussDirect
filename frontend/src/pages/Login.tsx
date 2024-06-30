@@ -1,6 +1,21 @@
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
+import useLogin from "../hooks/useLogin";
+import Loading from "../components/Loading";
 
 export const Login = () => {
+  const [inputs, setInputs] = useState({
+    username: "",
+    password: "",
+  });
+  const { loading, login } = useLogin();
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    console.log(inputs);
+    login(inputs);
+  };
+  if (loading) return <Loading />;
   return (
     <>
       <div className="flex flex-col justify-center items-center min-w-96 rounded-md hover:shadow-inner shadow-2xl  ">
@@ -8,7 +23,7 @@ export const Login = () => {
           <h1 className="text-3xl font-semibold text-center text-white ">
             Login
           </h1>
-          <form>
+          <form onSubmit={handleSubmit}>
             <div>
               <label className="label p-2">
                 <span className="text-white text-base ">username</span>
@@ -16,6 +31,10 @@ export const Login = () => {
               <input
                 type="text"
                 placeholder="username"
+                value={inputs.username}
+                onChange={(e) =>
+                  setInputs({ ...inputs, username: e.target.value })
+                }
                 className="input input-bordered w-full h-10"
               ></input>
             </div>
@@ -27,6 +46,10 @@ export const Login = () => {
               <input
                 type="text"
                 placeholder="password"
+                value={inputs.password}
+                onChange={(e) =>
+                  setInputs({ ...inputs, password: e.target.value })
+                }
                 className="input h-10 w-full input-bordered"
               ></input>
             </div>
