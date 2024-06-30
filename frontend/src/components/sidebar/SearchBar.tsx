@@ -2,7 +2,7 @@ import { Search } from "lucide-react";
 const SearchBar = () => {
   return (
     <>
-      <form className="p-2 flex gap-2 items-center">
+      <form className="p-2 flex gap-2 items-center ">
         <input
           type="text"
           className="input input-bordered md:h-10 h-6 "

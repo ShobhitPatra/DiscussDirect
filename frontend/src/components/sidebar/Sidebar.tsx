@@ -5,7 +5,7 @@ import SearchBar from "./SearchBar";
 const Sidebar = () => {
   return (
     <>
-      <div className="flex flex-col border-r-2 border-slate-200  border-opacity-10 bg-slate-800 bg-opacity-30 rounded-s-lg">
+      <div className="flex flex-col border-r-2 border-slate-200  border-opacity-10 bg-slate-800 bg-opacity-30 rounded-s-lg md:w-1/3">
         <SearchBar />
         <div className="divider px-3 "></div>
         <Conversations />

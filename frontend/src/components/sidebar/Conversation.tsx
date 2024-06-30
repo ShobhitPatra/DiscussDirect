@@ -9,10 +9,10 @@ const Conversation = () => {
         </div>
 
         <div className="flex gap-2 items-center px-2 ">
-          <div className="md:text-lg text-sm text-slate-300 font-semibold">
+          <div className="md:text-md text-sm text-slate-300 font-semibold">
             Shobhit Patra
           </div>
-          <div className="md:text-lg text-sm text-slate-300 font-semibold">
+          <div className="md:text-md text-sm text-slate-300 font-semibold">
             emot
           </div>
         </div>
