@@ -9,7 +9,7 @@ export const MessageBox = () => {
           <span className="md:text-xl text-sm md:font-semibold  text-white">
             To :{" "}
           </span>
-          <span className="md:text-xl text-sm md:font-semibold text-orange-500">
+          <span className="md:text-xl text-sm md:font-semibold text-blue-400  ">
             Shobhit Patra
           </span>
         </div>
