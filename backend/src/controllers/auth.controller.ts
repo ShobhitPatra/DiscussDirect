@@ -2,7 +2,6 @@ import { Request, Response } from "express";
 import bcryptjs from "bcryptjs";
 import prisma from "../db/prisma.js";
 import generateTokenAndSetCookie from "../utils/generateTokenAndSetCookie.js";
-import { useReducedMotion } from "framer-motion";
 
 export const signup = async (req: Request, res: Response) => {
   try {
@@ -49,8 +48,9 @@ export const signup = async (req: Request, res: Response) => {
         profilePic: newUser.profilePic,
         token,
       });
+    } else {
+      res.status(400).json({ error: "Invalid user data" });
     }
-    throw new Error("Unexpected error during signup");
   } catch (error) {
     console.log("error in signup controller ...........");
     console.log(error);

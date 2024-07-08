@@ -10,7 +10,7 @@ import {
 
 type AuthUserType = {
   id: string;
-  fullname: string;
+  fullName: string;
   username: string;
   gender: string;
   profilePic: string;
@@ -45,6 +45,7 @@ export const AuthContextProvider = ({ children }: { children: ReactNode }) => {
         console.log(error);
       } finally {
         setIsLoading(false);
+        console.log(`AuthUser : ${authUser}`);
       }
     };
     fetchAuthUser();
