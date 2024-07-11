@@ -3,17 +3,16 @@ import { ConversationType } from "../../types/global";
 
 const Conversation = ({ conversation }: { conversation: ConversationType }) => {
   const { selectedConversation, setSelectedConversation } = useConversation();
-  // console.log(selectedConversation?.id);
+  console.log(conversation);
   const isSelected = conversation.id === selectedConversation?.id;
   return (
     <>
       <div
         className={`flex p-2 m-1 ${
-          isSelected ? "bg-green-500" : "bg-slate-500"
+          isSelected ? "bg-green-500 bg-opacity-80" : "bg-slate-500"
         } bg-opacity-15 hover:bg-green-700 rounded-lg`}
         onClick={() => {
           setSelectedConversation(conversation);
-          console.log(conversation.id);
         }}
       >
         <div className="avatar flex justify-center items-center md:p-2">
