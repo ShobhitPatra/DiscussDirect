@@ -1,12 +1,5 @@
 import { create } from "zustand";
-import { ConversationType } from "../types/global";
-
-type MessageType = {
-  id: string;
-  body: string;
-  senderId: string;
-  createdAt: string;
-};
+import { ConversationType, MessageType } from "../types/global";
 
 interface ConversationState {
   selectedConversation: null | ConversationType;

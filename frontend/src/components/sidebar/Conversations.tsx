@@ -8,13 +8,7 @@ const Conversations = () => {
     <>
       <div className="flex flex-col overflow-auto">
         {!loading ? (
-          sidebarConvos.map((conversation) => (
-            <Conversation
-              key={conversation.id}
-              profilePicLink={conversation.profilePic}
-              name={conversation.fullName}
-            />
-          ))
+          sidebarConvos.map((c) => <Conversation key={c.id} conversation={c} />)
         ) : (
           <Loading />
         )}
