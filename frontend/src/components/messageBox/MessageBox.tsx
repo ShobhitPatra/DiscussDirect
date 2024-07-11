@@ -1,5 +1,6 @@
 import { useAuthContext } from "../../context/AuthContext";
 import useConversation from "../../store/UseConversation";
+import { ConversationType } from "../../types/global";
 import MessageInput from "./MessageInput";
 import Messages from "./Messages";
 
@@ -10,11 +11,7 @@ type AuthUserType = {
   gender: string;
   profilePic: string;
 };
-type ConversationType = {
-  id: string;
-  fullName: string;
-  profilePic: string;
-};
+
 export const MessageBox = () => {
   const { selectedConversation } = useConversation();
   const { authUser } = useAuthContext();

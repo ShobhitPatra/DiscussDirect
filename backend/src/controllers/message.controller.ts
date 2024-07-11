@@ -87,6 +87,7 @@ export const getMessages = async (req: Request, res: Response) => {
 export const getSideBarUsers = async (req: Request, res: Response) => {
   try {
     const myId = req.user.id;
+
     const conversations = await prisma.user.findMany({
       where: {
         id: {

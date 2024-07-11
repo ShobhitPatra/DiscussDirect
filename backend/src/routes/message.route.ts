@@ -8,7 +8,7 @@ import {
 const router = express.Router();
 
 router.post("/send/:id", protectRoute, sendMessage);
-router.get("/:id", protectRoute, getMessages);
 router.get("/bulk", protectRoute, getSideBarUsers);
+router.get("/:id", protectRoute, getMessages);
 
 export default router;
